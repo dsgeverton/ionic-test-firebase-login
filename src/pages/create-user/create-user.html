@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Cadastrar Usuário</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <h2 padding text-center>Cadastre-se</h2>
+    <form novalidate [formGroup]="registerForm" (ngSubmit)="submitForm()">
+      <ion-list>
+        <ion-item>
+          <ion-input type="text" placeholder="Nome"
+          formControlName="name"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-input type="email" placeholder="Email"
+          formControlName="email"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-input type="password" placeholder="Senha"
+          formControlName="password"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-input type="password" placeholder="Repita sua Senha"
+          formControlName="confirmPassword"></ion-input>
+        </ion-item>
+        <ion-item class='form-text error' *ngIf="registerForm.controls.confirmPassword.touched && registerForm.hasError('mismatchedPasswords') && registerForm.controls.password.valid">
+          <ion-label no-margin stacked>Passwords do not match</ion-label>
+        </ion-item>
+      </ion-list>
+      <div padding text-center>
+        <button ion-button round type="submit" [disabled]="registerForm.invalid">Salvar</button>
+      </div>
+    </form>
+  </ion-content>
+  
