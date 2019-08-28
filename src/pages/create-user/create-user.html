@@ -1,29 +1,36 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>Cadastrar Usuário</ion-title>
-    </ion-navbar>
-  </ion-header>
+
+</ion-header>
   
-  <ion-content padding>
-    <h2 padding text-center>Cadastre-se</h2>
+  <ion-content padding class="user-style">
+
+      <h3 text-center class="text-style">Oba!</h3>
+    <h3 text-center class="text-style"> 
+      Será um prazer ter você por aqui!  
+      Para começarmos, preencha completamente os campos abaixo:</h3>
     <form novalidate [formGroup]="registerForm" (ngSubmit)="submitForm()">
-      <ion-list>
-        <ion-item>
-          <ion-input type="text" placeholder="Nome"
+      <ion-list class="input-list">
+        <ion-item class="input-space">
+          <ion-input type="text" placeholder="Nome Completo"
           formControlName="name"></ion-input>
         </ion-item>
+
+        <ion-item class="input-space">
+          <ion-input type="text" placeholder="CPF"
+          formControlName="name"></ion-input>
+        </ion-item>        
         
-        <ion-item>
+        <ion-item class="input-space">
           <ion-input type="email" placeholder="Email"
           formControlName="email"></ion-input>
         </ion-item>
         
-        <ion-item>
+        <ion-item class="input-space">
           <ion-input type="password" placeholder="Senha"
           formControlName="password"></ion-input>
         </ion-item>
         
-        <ion-item>
+        <ion-item class="input-space">
           <ion-input type="password" placeholder="Repita sua Senha"
           formControlName="confirmPassword"></ion-input>
         </ion-item>
@@ -32,7 +39,7 @@
         </ion-item>
       </ion-list>
       <div padding text-center>
-        <button ion-button round type="submit" [disabled]="registerForm.invalid">Salvar</button>
+        <button ion-button style="color:white; width: 90%;" round type="submit" outline [disabled]="registerForm.invalid">Tudo Pronto!         </button>
       </div>
     </form>
   </ion-content>
