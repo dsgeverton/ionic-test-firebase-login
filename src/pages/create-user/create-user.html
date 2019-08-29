@@ -1,6 +1,6 @@
 <ion-header>
-    <button ion-button style="background: none;" icon-only>
-      <ion-icon style="color: white;" name="ios-arrow-round-back-outline"></ion-icon>
+    <button ion-button style="background: none;" navPop icon-only>
+        <ion-icon name="ios-arrow-round-back-outline" style="color: white;"></ion-icon>
     </button>
 </ion-header>
   
@@ -18,7 +18,7 @@
         </ion-item>
 
         <ion-item class="input-space">
-          <ion-input type="text" placeholder="CPF"
+          <ion-input type="tel" placeholder="CPF" [brmasker]="{person: true}"
           formControlName="cpf"></ion-input>
         </ion-item>        
         
@@ -41,7 +41,7 @@
         </ion-item>
       </ion-list>
       <div padding text-center>
-        <button ion-button style="color:white; width: 90%;" round type="submit" outline [disabled]="registerForm.invalid">Tudo Pronto!         </button>
+        <button class="submit-button" ion-button round type="submit" outline [disabled]="registerForm.invalid">Tudo Pronto!         </button>
       </div>
     </form>
   </ion-content>

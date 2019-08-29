@@ -6,9 +6,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AlertController } from 'ionic-angular';
 
-@IonicPage({
-  name: "create-user"
-})
+@IonicPage()
 @Component({
   selector: 'page-create-user',
   templateUrl: 'create-user.html',
@@ -57,7 +55,13 @@ export class CreateUserPage {
         this.navCtrl.setRoot(HomeUserPage)
       })
       .catch((error) => {
-        console.log("Deu erro")
+        console.log("Deu erro: "+error)
+        let alert = this.alertCtrl.create({
+          title: 'Ops...',
+          subTitle: "O endereço de email já está sendo utilizado por outra conta",
+          buttons: ['OK']
+        });
+        alert.present();
       })
   }
 

@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { CreateUserPageModule } from '../pages/create-user/create-user.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   imports: [
     BrowserModule,
     HomeUserPageModule,
+    CreateUserPageModule,
     AngularFireModule.initializeApp(environment.firebase),
     IonicModule.forRoot(MyApp)
   ],
