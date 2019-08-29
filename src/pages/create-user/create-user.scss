@@ -1,7 +1,14 @@
 page-create-user {
 
+    @font-face {
+        font-family: Montserrat;
+        src: url(../../assets/fonts/Montserrat/Montserrat-Light.ttf) format("ttf");
+        font-weight: 200
+        }
+
     .text-style {
         color: white;
+        font-family: Montserrat!important;
     }
     .user-style {
         background-color: #7BB7D9;

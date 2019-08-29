@@ -1,4 +1,4 @@
-import { CreateUserPageModule } from './../pages/create-user/create-user.module';
+import { HomeUserPageModule } from './../pages/home-user/home-user.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -19,6 +19,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   ],
   imports: [
     BrowserModule,
+    HomeUserPageModule,
     AngularFireModule.initializeApp(environment.firebase),
     IonicModule.forRoot(MyApp)
   ],

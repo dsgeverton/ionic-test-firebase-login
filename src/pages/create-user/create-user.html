@@ -1,5 +1,7 @@
 <ion-header>
-
+    <button ion-button style="background: none;" icon-only>
+      <ion-icon style="color: white;" name="ios-arrow-round-back-outline"></ion-icon>
+    </button>
 </ion-header>
   
   <ion-content padding class="user-style">
@@ -17,7 +19,7 @@
 
         <ion-item class="input-space">
           <ion-input type="text" placeholder="CPF"
-          formControlName="name"></ion-input>
+          formControlName="cpf"></ion-input>
         </ion-item>        
         
         <ion-item class="input-space">
@@ -35,7 +37,7 @@
           formControlName="confirmPassword"></ion-input>
         </ion-item>
         <ion-item class='form-text error' *ngIf="registerForm.controls.confirmPassword.touched && registerForm.hasError('mismatchedPasswords') && registerForm.controls.password.valid">
-          <ion-label no-margin stacked>Passwords do not match</ion-label>
+          <ion-label no-margin stacked>As senhas não são iguais!</ion-label>
         </ion-item>
       </ion-list>
       <div padding text-center>
