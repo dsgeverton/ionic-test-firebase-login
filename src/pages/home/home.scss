@@ -2,7 +2,7 @@ page-home {
 
     @font-face {
         font-family: Montserrat;
-        src: url(../../assets/fonts/Montserrat/Montserrat-Regular.ttf) format("ttf");
+        src: url(../../assets/fonts/Montserrat/Montserrat-Light.ttf) format("ttf");
         // font-weight: 200
         }
 
@@ -13,15 +13,60 @@ page-home {
             align-items: center!important;
     }
 
+    .container {
+        background: url(../../assets/imgs/backgroud_test.jpg);
+        background-repeat: no-repeat;
+        // background-position: 100;
+        background-size: 100%;
+        background-position: center;
+        position: absolute;
+        width: 1206px;
+        height: 678px;
+        left: -458px;
+        top: -6px;
+
+        filter: blur(2px);
+    }
+
+    // logo
+    .logo-helfen {
+        background: url(../../assets/imgs/logoHelfen.png);
+        background-repeat: no-repeat;
+        // background-position: 100;
+        background-size: 100%;
+        background-position: center;
+
+        position: absolute;
+        width: 196px;
+        height: 196px;
+        left: 89px;
+        top: 80px;
+    }
+
+    #nome-helfen {
+        // background: #F0F0F0;
+        position: relative;
+        top: 45px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+
+        color: #FFFFFF;
+
+    }
     // buttons
 
     .login-button {
-        font-size: 24px;
-        height: 58px;
-        background: #7BB7D9;
-        border-radius: 25px;
+        font-size: 18px;
+        position: absolute;
+        width: 195px;
+        height: 55px;
+        left: 90px;
+        top: 553px;
 
         box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+        background: #19856B;
+        border-radius: 2px;
     }
 
     .signin-button {

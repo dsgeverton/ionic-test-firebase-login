@@ -5,7 +5,7 @@ import { CreateUserPage } from '../create-user/create-user';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AlertController } from 'ionic-angular';
-import { HomeUserPage } from '../home-user/home-user';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -27,37 +27,12 @@ export class HomePage {
       })
   }
 
-  loginFirebase() {
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value)
-      this.afAuth.auth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
-      .then((response) => {
-        console.log("Autenticou!")
-        this.navCtrl.setRoot(HomeUserPage)
-        this.afAuth.auth.signOut()
-      })
-      .catch((error) => {
-        console.log("deu merda no login")
-        let alert = this.alertCtrl.create({
-          title: 'Ops...',
-          subTitle: "Usuário os senha incorretos",
-          buttons: ['OK']
-        });
-        alert.present();
-      })
-    } else {
-      console.log("Form inválido: "+this.loginForm.status)
-      let alert = this.alertCtrl.create({
-        title: 'Acho que tem algo errado...',
-        subTitle: "Preencha o login de forma correta",
-        buttons: ['OK']
-      });
-      alert.present();
-    }
-  }
-
   abrirCreateUser() {
     this.navCtrl.push(CreateUserPage)
+  }
+
+  openLoginUser() {
+    this.navCtrl.push(LoginPage)
   }
 
 }

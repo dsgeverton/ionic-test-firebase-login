@@ -51,24 +51,20 @@ export class CreateUserPage {
       this.registerForm.value.email, this.registerForm.value.password)
       .then((response) => {
         console.log("Criou o usuário.");
-        this.presentAlert()
+        this.presentAlert("Criação de usuário...", "Bem-vindo ao app " + this.registerForm.value.name + "!")
         this.navCtrl.setRoot(HomeUserPage)
       })
       .catch((error) => {
-        console.log("Deu erro: "+error)
-        let alert = this.alertCtrl.create({
-          title: 'Ops...',
-          subTitle: "O endereço de email já está sendo utilizado por outra conta",
-          buttons: ['OK']
-        });
-        alert.present();
+        console.log("Deu erro: "+error.code)
+        if (error.code == "auth/email-already-in-use")
+          this.presentAlert("Ops...", "O endereço de email já está sendo utilizado por outra conta")
       })
   }
 
-  presentAlert() {
+  presentAlert(title:string, subtitle: string) {
     let alert = this.alertCtrl.create({
-      title: 'Criação de usuário...',
-      subTitle: 'Bem-vindo ao app ' + this.registerForm.value.name + "!",
+      title: title,
+      subTitle: subtitle,
       buttons: ['OK']
     });
     alert.present();

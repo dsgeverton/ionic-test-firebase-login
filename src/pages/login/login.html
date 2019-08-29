@@ -1,0 +1,32 @@
+<ion-header>
+  <button ion-button style="background: none;" navPop icon-only>
+      <ion-icon name="ios-arrow-round-back-outline" style="color: white;"></ion-icon>
+  </button>
+</ion-header>
+  
+  <ion-content padding text-center class="vertical-align-content">
+    <div padding text-center>
+        <h3 text-left class="text-style">Que bom ter você de volta! 😃 
+          Por favor, faça seu login:</h3>
+      <form novalidate [formGroup]="loginForm" (ngSubmit)="loginFirebase()">
+        <ion-list class="input-list">
+          <ion-item class="input-space">
+            <ion-icon class="input-icon" name="mail" item-left></ion-icon>
+            <ion-input type="email" placeholder="Email"
+            formControlName="email"></ion-input>
+          </ion-item>
+          
+          <ion-item class="input-space">
+            <ion-icon class="input-icon" name="lock" item-left></ion-icon>
+            <ion-input type="password" placeholder="Senha"
+            formControlName="password"></ion-input>
+          </ion-item>
+        </ion-list>
+        <div text-center>
+          <button ion-button round block type="submit" class="login-button">Entrar</button>
+        </div>
+      </form>
+      <button ion-button round outline (click)="abrirCreateUser()" class="signin-button">Ainda não possui uma conta? <p>Cadastre-se</p></button>
+    </div>
+  </ion-content>
+  
