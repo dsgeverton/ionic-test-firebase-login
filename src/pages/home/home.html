@@ -1,18 +1,16 @@
-<ion-header>
-
-</ion-header>
-
 <ion-content padding text-center class="vertical-align-content">
-  <div class="container"></div>
-  <div padding text-center>
-    <div class="logo-helfen"></div>
-    <h2 id="nome-helfen" >HELFEN</h2>
-    <h3 text-left class="text-style">Que bom ter você de volta! 😃 
-      Por favor, faça seu login:</h3>
+    <div class="container" padding text-center>
+      <img id="logo-helfen" src="../../assets/imgs/logoHelfen.png"/>
+      <h2 id="nome-helfen" >HELFEN</h2>
+      <h3 class="helfen-description">Olá! Bem-vindo ao Helfen!
+      Já nos conhece? </h3>
       
       <div text-center>
-        <button ion-button block (click)="openLoginUser()" class="login-button">Criar minha conta</button>
-        <!-- <button ion-button round outline (click)="abrirCreateUser()" class="signin-button">Ainda não possui uma conta? <p>Cadastre-se</p></button> -->
+        <button ion-button (click)="abrirCreateUser()" class="about-button">Quero saber mais!</button>
+        <button color="helfen-green" ion-button (click)="openLoginUser()" class="signin-button">Criar minha conta</button>
       </div>
+      <ion-row >
+        <p>Já tenho uma conta!</p> <p id="entrar" (click)="openLoginUser()">Entrar</p>
+      </ion-row>
     </div>
 </ion-content>

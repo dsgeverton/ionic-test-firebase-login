@@ -4,8 +4,9 @@ import { CreateUserPage } from '../create-user/create-user';
 
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AlertController } from 'ionic-angular';
+// import { AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { StatusBar } from '@ionic-native/status-bar';
 
 @Component({
   selector: 'page-home',
@@ -18,8 +19,10 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public afAuth: AngularFireAuth,
-    private alertCtrl: AlertController,
-    public formBuilder: FormBuilder) {
+    public formBuilder: FormBuilder,
+    private statusBar: StatusBar) {
+      this.statusBar.overlaysWebView(true)
+      this.statusBar.backgroundColorByHexString("#ffffff")
       this.loginForm = formBuilder.group({
         email: ['', Validators.compose([Validators.required, Validators.email])],
         // Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,16}$') regex to password

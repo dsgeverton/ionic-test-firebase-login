@@ -38,7 +38,13 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+
+  helfen-blue: #7BB7D9,
+  helfen-green: #19856B,
+  helfen-text-dark: #A3A3A3,
+  helfen-orange: #F2994A,
+  helfen-white: #FFFFFF,
 );
 
 
@@ -86,3 +92,4 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+// @import "montserrat";

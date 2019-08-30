@@ -1,16 +1,16 @@
-<ion-header>
-    <button ion-button style="background: none;" navPop icon-only>
-        <ion-icon name="ios-arrow-round-back-outline" style="color: white;"></ion-icon>
-    </button>
-</ion-header>
-  
-  <ion-content padding class="user-style">
 
-      <h3 text-center class="text-style">Oba!</h3>
+    
+  <ion-content padding class="user-style">
+    
+    <!-- <button ion-button style="background: none;" navPop icon-only> -->
+      <ion-icon name="ios-arrow-round-back-outline" navPop style="color: white;"></ion-icon>
+    <!-- </button> -->
+
+    <h3 text-center class="text-style">Oba!</h3>
     <h3 text-center class="text-style"> 
       Será um prazer ter você por aqui!  
       Para começarmos, preencha completamente os campos abaixo:</h3>
-    <form novalidate [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    <form novalidate [formGroup]="registerUserForm" (ngSubmit)="submitForm()">
       <ion-list class="input-list">
         <ion-item class="input-space">
           <ion-input type="text" placeholder="Nome Completo"
@@ -18,7 +18,7 @@
         </ion-item>
 
         <ion-item class="input-space">
-          <ion-input type="tel" placeholder="CPF" [brmasker]="{person: true}"
+          <ion-input type="tel" placeholder="CPF" [brmasker]="{mask:'000.000.000-00', len:14}"
           formControlName="cpf"></ion-input>
         </ion-item>        
         
@@ -36,12 +36,12 @@
           <ion-input type="password" placeholder="Repita sua Senha"
           formControlName="confirmPassword"></ion-input>
         </ion-item>
-        <ion-item class='form-text error' *ngIf="registerForm.controls.confirmPassword.touched && registerForm.hasError('mismatchedPasswords') && registerForm.controls.password.valid">
+        <ion-item class='form-text error' *ngIf="registerUserForm.controls.confirmPassword.touched && registerUserForm.hasError('mismatchedPasswords') && registerUserForm.controls.password.valid">
           <ion-label no-margin stacked>As senhas não são iguais!</ion-label>
         </ion-item>
       </ion-list>
       <div padding text-center>
-        <button class="submit-button" ion-button round type="submit" outline [disabled]="registerForm.invalid">Tudo Pronto!         </button>
+        <button class="submit-button" ion-button round type="submit" outline [disabled]="registerUserForm.invalid">Tudo Pronto!         </button>
       </div>
     </form>
   </ion-content>

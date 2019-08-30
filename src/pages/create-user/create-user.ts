@@ -13,7 +13,7 @@ import { AlertController } from 'ionic-angular';
 })
 export class CreateUserPage {
 
-  registerForm: FormGroup;
+  registerUserForm: FormGroup;
 
   constructor(
     public navCtrl: NavController, 
@@ -22,7 +22,7 @@ export class CreateUserPage {
     public afAuth: AngularFireAuth,
     private alertCtrl: AlertController) {
 
-      this.registerForm = formBuilder.group({
+      this.registerUserForm = formBuilder.group({
         name: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
         cpf: ['', Validators.compose([Validators.required])],
         email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -46,12 +46,12 @@ export class CreateUserPage {
   }
 
   submitForm() {
-   console.log(this.registerForm.value)
+   console.log(this.registerUserForm.value)
     this.afAuth.auth.createUserWithEmailAndPassword(
-      this.registerForm.value.email, this.registerForm.value.password)
+      this.registerUserForm.value.email, this.registerUserForm.value.password)
       .then((response) => {
         console.log("Criou o usuário.");
-        this.presentAlert("Criação de usuário...", "Bem-vindo ao app " + this.registerForm.value.name + "!")
+        this.presentAlert("Criação de usuário...", "Bem-vindo ao app " + this.registerUserForm.value.name + "!")
         this.navCtrl.setRoot(HomeUserPage)
       })
       .catch((error) => {
