@@ -30,8 +30,12 @@ export class HomePage {
       })
   }
 
-  abrirCreateUser() {
+  openCreateUser() {
     this.navCtrl.push(CreateUserPage)
+  }
+
+  openAboutScreen() {
+    console.log("nada aqui ainda...")
   }
 
   openLoginUser() {

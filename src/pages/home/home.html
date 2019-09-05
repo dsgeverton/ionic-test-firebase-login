@@ -1,13 +1,14 @@
-<ion-content padding text-center class="vertical-align-content">
-    <div class="container" padding text-center>
+<ion-content text-center class="vertical-align-content">
+  <div class="background-image" ></div>  
+  <div class="container" padding text-center>
       <img id="logo-helfen" src="../../assets/imgs/logoHelfen.png"/>
       <h2 id="nome-helfen" >HELFEN</h2>
       <h3 class="helfen-description">Olá! Bem-vindo ao Helfen!
       Já nos conhece? </h3>
       
       <div text-center>
-        <button ion-button (click)="abrirCreateUser()" class="about-button">Quero saber mais!</button>
-        <button color="helfen-green" ion-button (click)="openLoginUser()" class="signin-button">Criar minha conta</button>
+        <button ion-button (click)="openAboutScreen()" class="about-button">Quero saber mais!</button>
+        <button color="helfen-green" ion-button (click)="openCreateUser()" class="signin-button">Criar minha conta</button>
       </div>
       <ion-row >
         <p>Já tenho uma conta!</p> <p id="entrar" (click)="openLoginUser()">Entrar</p>
