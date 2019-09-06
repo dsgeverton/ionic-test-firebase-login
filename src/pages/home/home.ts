@@ -7,6 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 // import { AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { StatusBar } from '@ionic-native/status-bar';
+import { AboutPage } from '../about/about';
 
 @Component({
   selector: 'page-home',
@@ -35,7 +36,7 @@ export class HomePage {
   }
 
   openAboutScreen() {
-    console.log("nada aqui ainda...")
+    this.navCtrl.push(AboutPage)
   }
 
   openLoginUser() {
