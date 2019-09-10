@@ -13,8 +13,9 @@ import { environment } from '../environments/environment';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { CreateUserPageModule } from '../pages/create-user/create-user.module';
 import { LoginPageModule } from '../pages/login/login.module';
-import { AboutPage } from '../pages/about/about';
 import { AboutPageModule } from '../pages/about/about.module';
+
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AboutPageModule } from '../pages/about/about.module';
     CreateUserPageModule,
     LoginPageModule,
     AboutPageModule,
+    IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     IonicModule.forRoot(MyApp)
   ],

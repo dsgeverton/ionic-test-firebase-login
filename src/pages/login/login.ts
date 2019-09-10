@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HomeUserPage } from '../home-user/home-user';
 import { CreateUserPage } from '../create-user/create-user';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the LoginPage page.
@@ -26,7 +27,8 @@ export class LoginPage {
     public navCtrl: NavController,
     public afAuth: AngularFireAuth,
     private alertCtrl: AlertController,
-    public formBuilder: FormBuilder) {
+    public formBuilder: FormBuilder,
+    public storage: Storage) {
       this.loginForm = formBuilder.group({
         email: ['', Validators.compose([Validators.required, Validators.email])],
         // Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,16}$') regex to password
@@ -39,7 +41,12 @@ export class LoginPage {
       console.log(this.loginForm.value)
       this.afAuth.auth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
       .then((response) => {
-        console.log("Autenticou!")
+        console.log("Autenticou porra!")
+        this.storage.get("user").then((response) => {
+          if (response == null) {
+            this.storage.set("user", "empty")
+          }
+        })
         this.navCtrl.setRoot(HomeUserPage)
         this.afAuth.auth.signOut()
       })

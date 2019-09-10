@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the HomeUserPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomeUserPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private uid: string;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public storage: Storage) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomeUserPage');
+    this.storage.get("user").then((response) => {
+      if (response != null) {
+        this.uid = response;
+        console.log("recebeu o uid "+this.uid)
+      }
+    })
   }
 
 }

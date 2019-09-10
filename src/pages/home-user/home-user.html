@@ -6,10 +6,21 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>home-user</ion-title>
+    <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="card-background-page">
+  <ion-card>
+    <img src="../../assets/imgs/logoHelfen.png"/>
+    <div class="card-title">São Paulo</div>
+    <div class="card-subtitle">41 Listings</div>
+  </ion-card>
 
+  <p>{{ uid }}</p>
+
+  <ion-item>
+    <ion-input type="text" placeholder="Nada ainda..."> </ion-input>
+  </ion-item>
+  <button ion-button round block primary>Registrar Emoção</button>
 </ion-content>

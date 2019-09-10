@@ -5,6 +5,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+const uuidv1 = require('uuid/v4');
 
 @IonicPage()
 @Component({
@@ -14,13 +16,15 @@ import { AlertController } from 'ionic-angular';
 export class CreateUserPage {
 
   registerUserForm: FormGroup;
+  uid: string;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public afAuth: AngularFireAuth,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    public storage: Storage) {
 
       this.registerUserForm = formBuilder.group({
         name: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
@@ -50,9 +54,12 @@ export class CreateUserPage {
     this.afAuth.auth.createUserWithEmailAndPassword(
       this.registerUserForm.value.email, this.registerUserForm.value.password)
       .then((response) => {
-        console.log("Criou o usuário.");
-        this.presentAlert("Criação de usuário...", "Bem-vindo ao app " + this.registerUserForm.value.name + "!")
-        this.navCtrl.setRoot(HomeUserPage)
+        this.uid = uuidv1()
+        console.log("Criou o usuário "+this.uid+".");
+        this.storage.set("user", this.uid).then(() => {
+          this.presentAlert("Criação de usuário...", "Bem-vindo ao app " + this.registerUserForm.value.name + "!")
+          this.navCtrl.setRoot(HomeUserPage)
+        })
       })
       .catch((error) => {
         console.log("Deu erro: "+error.code)
