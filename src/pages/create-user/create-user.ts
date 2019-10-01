@@ -4,9 +4,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 const uuidv1 = require('uuid/v4');
+
+import CryptoJS from 'crypto-js';
 
 @IonicPage()
 @Component({
@@ -24,7 +27,8 @@ export class CreateUserPage {
     public formBuilder: FormBuilder,
     public afAuth: AngularFireAuth,
     private alertCtrl: AlertController,
-    public storage: Storage) {
+    public storage: Storage,
+    public db: AngularFireDatabase) {
 
       this.registerUserForm = formBuilder.group({
         name: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
@@ -54,18 +58,31 @@ export class CreateUserPage {
     this.afAuth.auth.createUserWithEmailAndPassword(
       this.registerUserForm.value.email, this.registerUserForm.value.password)
       .then((response) => {
-        this.uid = uuidv1()
-        console.log("Criou o usuário "+this.uid+".");
-        this.storage.set("user", this.uid).then(() => {
-          this.presentAlert("Criação de usuário...", "Bem-vindo ao app " + this.registerUserForm.value.name + "!")
-          this.navCtrl.setRoot(HomeUserPage)
-        })
+        this.addUserToFirebase()
       })
       .catch((error) => {
         console.log("Deu erro: "+error.code)
         if (error.code == "auth/email-already-in-use")
           this.presentAlert("Ops...", "O endereço de email já está sendo utilizado por outra conta")
       })
+  }
+
+  addUserToFirebase() {
+    this.uid = uuidv1()
+    console.log("Criou o usuário "+this.uid+".");
+    this.db.database.ref("/users").child(this.uid).set({
+      name: this.registerUserForm.value.name,
+      cpf: this.registerUserForm.value.cpf,
+      email: this.registerUserForm.value.email,
+      password: CryptoJS.SHA256(this.registerUserForm.value.password).toString(CryptoJS.enc.Hex)
+    })
+    .then(() => {
+      console.log("Usuário adicionado!")
+      this.storage.set("user", this.uid).then(() => {
+        this.presentAlert("Criação de usuário...", "Bem-vindo ao app " + this.registerUserForm.value.name + "!")
+        this.navCtrl.setRoot(HomeUserPage)
+      })
+    })
   }
 
   presentAlert(title:string, subtitle: string) {
