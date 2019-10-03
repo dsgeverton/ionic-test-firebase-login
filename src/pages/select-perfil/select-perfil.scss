@@ -1,0 +1,37 @@
+page-select-perfil {
+    ion-content {
+        background-image: url("../../assets/imgs/selecionar_conta_background.png");
+        background-position: center;
+    }
+    .textos {
+        font-size: 12pt;
+        color: white!important;
+    }
+
+    #voltar {
+        font-size: 3em;
+        color: white;
+        text-shadow: 2px 2px 3px black;
+        width: 50px;
+    }
+
+    ion-row {
+        text-shadow: 2px 2px 10px #000;
+        position: relative;
+        top: 40%;
+        align-items: center!important;
+        justify-content: center;
+    }
+    
+    ion-row p {
+        color: #ffffff;
+    }
+
+    #entrar {
+        padding-left: 5px;
+        font-size: 14pt;
+        color: #19856B;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+}

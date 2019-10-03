@@ -29,15 +29,19 @@ export class CreateUserPage {
     private alertCtrl: AlertController,
     public storage: Storage,
     public db: AngularFireDatabase) {
+    this.validateForm()
+  }
 
-      this.registerUserForm = formBuilder.group({
-        name: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-        cpf: ['', Validators.compose([Validators.required])],
-        email: ['', Validators.compose([Validators.required, Validators.email])],
-        // Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,16}$') regex to password
-        password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])],
-        confirmPassword: ['', Validators.required]
-      }, {validator: this.matchingPasswords('password', 'confirmPassword')});
+  validateForm() {
+    this.registerUserForm = this.formBuilder.group({
+      name: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+      cpf: ['', Validators.compose([Validators.required])],
+      dataNascimento: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      // Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,16}$') regex to password
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])],
+      confirmPassword: ['', Validators.required]
+    }, {validator: this.matchingPasswords('password', 'confirmPassword')});
   }
 
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
@@ -70,7 +74,7 @@ export class CreateUserPage {
   addUserToFirebase() {
     this.uid = uuidv1()
     console.log("Criou o usuário "+this.uid+".");
-    this.db.database.ref("/users").child(this.uid).set({
+    this.db.database.ref("/patients").child(this.uid).set({
       name: this.registerUserForm.value.name,
       cpf: this.registerUserForm.value.cpf,
       email: this.registerUserForm.value.email,
@@ -78,6 +82,9 @@ export class CreateUserPage {
     })
     .then(() => {
       console.log("Usuário adicionado!")
+      this.db.database.ref("/cpfs").child(CryptoJS.SHA256(this.registerUserForm.value.cpf).toString(CryptoJS.enc.Hex)).set({
+        string_value: this.registerUserForm.value.cpf
+      })
       this.storage.set("user", this.uid).then(() => {
         this.presentAlert("Criação de usuário...", "Bem-vindo ao app " + this.registerUserForm.value.name + "!")
         this.navCtrl.setRoot(HomeUserPage)

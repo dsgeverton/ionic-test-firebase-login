@@ -8,6 +8,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { LoginPage } from '../login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AboutPage } from '../about/about';
+import { SelectPerfilPage } from '../select-perfil/select-perfil';
 
 @Component({
   selector: 'page-home',
@@ -24,15 +25,10 @@ export class HomePage {
     private statusBar: StatusBar) {
       this.statusBar.overlaysWebView(true)
       this.statusBar.backgroundColorByHexString("#ffffff")
-      this.loginForm = formBuilder.group({
-        email: ['', Validators.compose([Validators.required, Validators.email])],
-        // Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,16}$') regex to password
-        password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])]
-      })
   }
 
   openCreateUser() {
-    this.navCtrl.push(CreateUserPage)
+    this.navCtrl.push(SelectPerfilPage)
   }
 
   openAboutScreen() {

@@ -17,6 +17,9 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { AboutPageModule } from '../pages/about/about.module';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
+import { SelectPerfilPageModule } from '../pages/select-perfil/select-perfil.module';
+import { TicketValidationPageModule } from '../pages/ticket-validation/ticket-validation.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { IonicStorageModule } from '@ionic/storage';
     BrowserModule,
     HomeUserPageModule,
     CreateUserPageModule,
+    SelectPerfilPageModule,
     LoginPageModule,
+    TicketValidationPageModule,
     AboutPageModule,
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
@@ -43,7 +48,8 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     AngularFireAuth,
     AngularFireDatabase,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FirebaseServiceProvider
   ]
 })
 export class AppModule {}
