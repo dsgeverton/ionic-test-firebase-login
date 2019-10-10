@@ -1,3 +1,30 @@
 page-ticket-validation {
+    ion-content {
+        background-image: url("../../assets/imgs/selecionar_conta_background.png");
+        background-position: center;
+    }
 
+    .textos {
+        font-size: 12pt;
+        color: white!important;
+    }
+
+    #voltar {
+        font-size: 3em;
+        color: white;
+        text-shadow: 2px 2px 3px black;
+        width: 50px;
+    }
+
+    .input-space {
+        border-radius: 20px;
+        border-style: solid;
+        border-width: 2px 2px 2px 2px;
+        border-color: #19856B;
+    }
+
+    .submit-convite {
+        border-radius: 20px;
+        background-color: #F2994A;
+    }
 }
