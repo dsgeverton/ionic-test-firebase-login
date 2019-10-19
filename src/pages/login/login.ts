@@ -1,9 +1,9 @@
+import { SelectPerfilPage } from './../select-perfil/select-perfil';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HomeUserPage } from '../home-user/home-user';
-import { CreateUserPage } from '../create-user/create-user';
 import { Storage } from '@ionic/storage';
 
 @IonicPage()
@@ -53,8 +53,8 @@ export class LoginPage {
     }
   }
 
-  abrirCreateUser() {
-    this.navCtrl.push(CreateUserPage)
+  abrirSelectPerfil() {
+    this.navCtrl.push(SelectPerfilPage)
   }
 
   presentAlert(title:string, subtitle: string) {
